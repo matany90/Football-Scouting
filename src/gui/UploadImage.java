@@ -39,7 +39,7 @@ public class UploadImage extends JPanel {
 		m_imageLabel.setBorder(new LineBorder(Color.black, 1, true));
 		
 		//upload image filter file		
-		String[] okFileExtensions = new String[] { "jpg", "jpeg", "png", "gif", "bmp" };
+		String[] okFileExtensions = new String[] { "jpg", "jpeg", "png", "gif", "bmp", "JPG", "JPEG", "PNG", "GIF", "BMP" };
 		CustomFileFilter perFileFilter = new CustomFileFilter(okFileExtensions, "Image files");
 		m_fileImageChooser.addChoosableFileFilter(perFileFilter);
 		m_fileImageChooser.setFileFilter(perFileFilter);
