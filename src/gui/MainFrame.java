@@ -36,7 +36,6 @@ import controller.Controller;
 import model.Player;
 
 public class MainFrame extends JFrame {
-	
 	private AddPlayerFormPanel m_addPlayerFormPanel;
 	private SearchPlayerFormPanel m_searchPlayerFormPanel;
 	private JSplitPane m_splitPane;
