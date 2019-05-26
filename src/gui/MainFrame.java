@@ -213,9 +213,7 @@ public class MainFrame extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		//First Level
 		JMenu fileMenu = new JMenu("File");
-		JMenu windowMenu = new JMenu("Window");
 		menuBar.add(fileMenu);
-		menuBar.add(windowMenu);
 		
 		//init FileMenu items
 		JMenuItem exportDataItem = new JMenuItem("Export Data...");
