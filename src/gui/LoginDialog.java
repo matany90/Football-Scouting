@@ -31,6 +31,7 @@ public class LoginDialog extends JDialog {
 	private JPasswordField m_passwordField;
 	private Font m_userAndPasswordFont;
 	private JLabel m_imageLabel;
+	final private String k_passwordAgentUser = new String("123456");
 	private LoginDialogListener m_loginListener;
 	
 	public LoginDialog(JFrame parent) {
@@ -47,6 +48,9 @@ public class LoginDialog extends JDialog {
 		
 		//show * insted of points
 		m_passwordField.setEchoChar('*');
+		
+		//set default password for agent
+		m_passwordField.setText(k_passwordAgentUser);
 		
 		//load Default image
 		m_imageLabel = Utils.resourceImageToJLabel(new Dimension(160, 140), "/img/logoNoBack.png");
