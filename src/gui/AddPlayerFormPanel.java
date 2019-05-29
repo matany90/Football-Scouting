@@ -109,11 +109,6 @@ public class AddPlayerFormPanel extends JPanel {
 
 	
 	public AddPlayerFormPanel() {
-		//set Size:
-//		Dimension dim = getPreferredSize();
-//		dim.width = 250;
-//		setPreferredSize(dim);
-
 		//Init Components:
 		m_uploadImageLabel = new JLabel("Upload Profile Image: ");
 		m_uploadImage = new UploadImage();
