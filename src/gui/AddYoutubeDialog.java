@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AddYoutubeDialog extends JDialog {
+public class AddYoutubeDialog extends JDialog implements FootballScoutingJDialogs {
 	private JLabel m_addUrlLabel;
 	private JTextField m_addUrlTextField;
 	private JButton m_add;
@@ -40,7 +40,7 @@ public class AddYoutubeDialog extends JDialog {
 		});
 		
 		
-		layoutComponents();
+		layoutComponentsInJDialog();
 	}
 	
 	public JTextField getAddUrlTextField() {
@@ -55,7 +55,12 @@ public class AddYoutubeDialog extends JDialog {
 		m_confirmDialogYoutubeListener = i_listener;
 	}
 
-	private void layoutComponents() {
+//	private void layoutComponents() {
+//
+//	}
+
+	@Override
+	public void layoutComponentsInJDialog() {
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
 		
@@ -91,5 +96,6 @@ public class AddYoutubeDialog extends JDialog {
 		gc.gridx = 0;
 		gc.anchor = GridBagConstraints.CENTER;
 		add(m_add, gc);
+		
 	}
 }

@@ -1,9 +1,7 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -15,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -28,16 +25,9 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
-import chrriis.dj.nativeswing.swtimpl.components.WebBrowserCommandEvent;
-import chrriis.dj.nativeswing.swtimpl.components.WebBrowserEvent;
-import chrriis.dj.nativeswing.swtimpl.components.WebBrowserListener;
-import chrriis.dj.nativeswing.swtimpl.components.WebBrowserNavigationEvent;
-import chrriis.dj.nativeswing.swtimpl.components.WebBrowserWindowOpeningEvent;
-import chrriis.dj.nativeswing.swtimpl.components.WebBrowserWindowWillOpenEvent;
 import model.Player;
 
-public class PlayerDetailsDialog extends JDialog {
+public class PlayerDetailsDialog extends JDialog implements FootballScoutingJDialogs {
 	
 	private JLabel m_imageProfileLabel;
 	private JLabel m_playerName;
@@ -64,7 +54,7 @@ public class PlayerDetailsDialog extends JDialog {
 	private JLabel m_position;
 	private JLabel m_overall;
 	private JButton m_testYoutube;
-	private WebBrowserDialog m_webBrowserDialog;
+	private FootballScoutingJDialogs m_webBrowserDialog;
 	private String m_urlYoutube;
 	private ClosePlayerDialogListener m_closePlayerDialogListener;
 	//private
@@ -184,7 +174,7 @@ public class PlayerDetailsDialog extends JDialog {
 		m_testYoutube.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				PlayerDetailsDialog.this.setEnabled(false); //TODO:: uncomment when bag finish
-				m_webBrowserDialog = new WebBrowserDialog(PlayerDetailsDialog.this,  m_urlYoutube);				
+				m_webBrowserDialog = JDialogFactory.CreateJDialog("Web Browser JDialog", PlayerDetailsDialog.this, m_urlYoutube);
 			}		
 		});
 	
@@ -222,7 +212,7 @@ public class PlayerDetailsDialog extends JDialog {
 		for (JLabel label : toShow) {
 			label.setForeground(Color.white);
 		}
-		layoutComponents();
+		layoutComponentsInJDialog();
 	}
 	
 	private void loadImageInDialog(ImageIcon i_imageToLoad) {
@@ -259,7 +249,18 @@ public class PlayerDetailsDialog extends JDialog {
 		}
 	}
 	
-	private void layoutComponents() {
+//	private void layoutComponents() {
+//
+//
+//	}
+	
+	public void setClosePlayerDialogListener(ClosePlayerDialogListener i_listener) {
+		m_closePlayerDialogListener = i_listener;
+	}
+
+
+	@Override
+	public void layoutComponentsInJDialog() {
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
 		boolean isGoalkeeper = m_positionOnField.getText().substring(19, m_positionOnField.getText().length()).equals("Goalkeeper");
@@ -430,10 +431,6 @@ public class PlayerDetailsDialog extends JDialog {
         gc.weighty = 1;
         gc.insets = new Insets(0,0,0,5);
         add(isGoalkeeper ? m_position : m_power, gc);
-
-	}
-	
-	public void setClosePlayerDialogListener(ClosePlayerDialogListener i_listener) {
-		m_closePlayerDialogListener = i_listener;
+		
 	}
 }

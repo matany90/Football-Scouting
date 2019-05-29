@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.Border;
 
-public class LoginDialog extends JDialog {
+public class LoginDialog extends JDialog implements FootballScoutingJDialogs {
 	private JLabel m_userLabel;
 	private JLabel m_passwordLabel;
 	private JButton m_okButton;
@@ -95,10 +95,19 @@ public class LoginDialog extends JDialog {
 				}
 			}			
 		});		
-		layoutComponents();
+		layoutComponentsInJDialog();
 	}
 	
-	private void layoutComponents() {
+//	private void layoutComponents() {
+//
+//	}
+	
+	public void setLoginListener(LoginDialogListener i_listener) {
+		m_loginListener = i_listener;
+	}
+
+	@Override
+	public void layoutComponentsInJDialog() {
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
 		
@@ -160,9 +169,6 @@ public class LoginDialog extends JDialog {
         gc.fill = GridBagConstraints.VERTICAL;
         gc.insets = new Insets(0,0,0,5);
         add(m_imageLabel, gc);
-	}
-	
-	public void setLoginListener(LoginDialogListener i_listener) {
-		m_loginListener = i_listener;
+		
 	}
 }

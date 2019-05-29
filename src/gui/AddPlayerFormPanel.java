@@ -100,7 +100,7 @@ public class AddPlayerFormPanel extends JPanel {
 	private JButton m_addYoutubeButton;
 	private JLabel m_youtubeLinkLabel;
 	private String m_urlYoutube;
-	private AddYoutubeDialog m_addYoutubeDialog;
+	private FootballScoutingJDialogs m_addYoutubeDialog;
 	//ok Button
 	private JButton m_okButton;
 	//ok Button form listener
@@ -181,7 +181,7 @@ public class AddPlayerFormPanel extends JPanel {
 		m_powerRegularSpinner = new JSpinner(m_powerRegularModel);
 		m_addYoutubeButton = new JButton("Youtube video");
 		m_youtubeLinkLabel = new JLabel("Add Youtube Video: ");
-		m_addYoutubeDialog = new AddYoutubeDialog(this);
+		m_addYoutubeDialog = JDialogFactory.CreateJDialog("Add Youtube JDialog", this, "");
 		m_urlYoutube = new String();	
 		m_okButton = new JButton("OK");
 		//
@@ -229,16 +229,16 @@ public class AddPlayerFormPanel extends JPanel {
 		//youtube button - open url dialog
 		m_addYoutubeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				m_addYoutubeDialog.setVisible(true);
+				((AddYoutubeDialog)m_addYoutubeDialog).setVisible(true);
 			}			
 		});
 		
 		
 		//confirm button in dialog youtube listener - close dialog then process data
-		m_addYoutubeDialog.setConfirmDialogYoutubeListener(new ConfirmDialogYoutubeListener() {
+		((AddYoutubeDialog)m_addYoutubeDialog).setConfirmDialogYoutubeListener(new ConfirmDialogYoutubeListener() {
 			public void onConfirmClicked() {
-				m_addYoutubeDialog.setVisible(false);
-				m_urlYoutube = m_addYoutubeDialog.getAddUrlTextField().getText();
+				((AddYoutubeDialog)m_addYoutubeDialog).setVisible(false);
+				m_urlYoutube = ((AddYoutubeDialog)m_addYoutubeDialog).getAddUrlTextField().getText();
 			}			
 		});
 		
@@ -327,18 +327,6 @@ public class AddPlayerFormPanel extends JPanel {
 		layoutComponents();
 	}
 	
-//	 ///BACK IMAGE
-//	public void paintComponent(Graphics g) {
-//		g.setColor(Color.gray);
-////			try {
-////				//Image image = ImageIO.read(PlayerDetailsDialog.class.getResource("/img/try3Final.png"));
-////				//g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-////				
-////			} catch (Exception e) {
-////				// TODO Auto-generated catch block
-////				e.printStackTrace();
-////			}		
-//	}
 	
 	public void layoutComponents() {
 		//set Border
@@ -774,7 +762,7 @@ public class AddPlayerFormPanel extends JPanel {
 		m_powerRegularSpinner.setValue(60);
 		m_shootRegularSpinner.setValue(60);
 		m_urlYoutube = new String("");
-		m_addYoutubeDialog.setTextAddUrlTextField("");
+		((AddYoutubeDialog)m_addYoutubeDialog).setTextAddUrlTextField("");
 	}
 		
 	
@@ -826,20 +814,5 @@ public class AddPlayerFormPanel extends JPanel {
 		 }
 		 return false;		
 	}
-	
-//	private void setBackgroundImage() {
-////		//background image		
-//		try {
-//			Image image = ImageIO.read(PlayerDetailsDialog.class.getResource("/img/try1Final.jpg"));
-//		
-////				public void paintComponent(Graphics g) {
-////					g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-////				}
-//			//setContentPane(panel);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-	
+		
 }

@@ -22,7 +22,7 @@ import chrriis.dj.nativeswing.swtimpl.components.WebBrowserNavigationEvent;
 import chrriis.dj.nativeswing.swtimpl.components.WebBrowserWindowOpeningEvent;
 import chrriis.dj.nativeswing.swtimpl.components.WebBrowserWindowWillOpenEvent;
 
-public class WebBrowserDialog extends JDialog {
+public class WebBrowserDialog extends JDialog implements FootballScoutingJDialogs {
 
 	private JPanel m_wbPanel;
 	private JPanel m_loadingPanel;
@@ -159,5 +159,11 @@ public class WebBrowserDialog extends JDialog {
 		    	dispose();
 		    }
 		});
+	}
+
+	@Override
+	public void layoutComponentsInJDialog() {
+		// TODO Auto-generated method stub
+		
 	}
 }

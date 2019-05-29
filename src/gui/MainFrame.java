@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,14 +10,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -43,8 +43,8 @@ public class MainFrame extends JFrame {
 	private TablePanel m_tablePanel;
 	private Controller m_controller;
 	private JFileChooser m_fileChooser;
-	private LoginDialog m_loginDialog;
-	private PlayerDetailsDialog  m_playerDetailsDialog;
+	private FootballScoutingJDialogs m_loginDialog;
+	private FootballScoutingJDialogs m_playerDetailsDialog;
 	final private String k_passwordAgentUser = new String("123456");
 	final private String[] k_userTypeOptions = {"Agent User"}; 
 
@@ -68,18 +68,18 @@ public class MainFrame extends JFrame {
 		m_controller = new Controller();
 		m_splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, m_Tabs, m_tablePanel);
 		m_fileChooser = new JFileChooser();
-		m_loginDialog = new LoginDialog(this);
-		m_playerDetailsDialog = new PlayerDetailsDialog(this);
+		m_loginDialog = JDialogFactory.CreateJDialog("Login JDialog", this, "");
+		m_playerDetailsDialog = JDialogFactory.CreateJDialog("Player Details JDialog", this, "");
 
 		
 		////show login page
-		m_loginDialog.setVisible(true);
+		((LoginDialog) m_loginDialog).setVisible(true);
 		setEnabled(false); //set MainFrame disabled when login pop up
-		m_loginDialog.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		((LoginDialog) m_loginDialog).setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
 		
 		//set login ok button listener
-		m_loginDialog.setLoginListener(new LoginDialogListener() {
+		((LoginDialog) m_loginDialog).setLoginListener(new LoginDialogListener() {
 			public boolean LoginDialogChange(String user, String password) {
 				if (Arrays.asList(k_userTypeOptions).contains(user) && password.equals(k_passwordAgentUser)) {
 					showMessageDialog("Login successful!",
@@ -128,14 +128,14 @@ public class MainFrame extends JFrame {
 		//set table listener for open dialog player details
 		m_tablePanel.setPlayerDetailsListener(new PlayerDetailsListener() {
 			public void showPlayerDetails(Player player) {
-				m_playerDetailsDialog.setPlayerToShow(player);
-				m_playerDetailsDialog.setVisible(true);
+				((PlayerDetailsDialog)m_playerDetailsDialog).setPlayerToShow(player);
+				((PlayerDetailsDialog)m_playerDetailsDialog).setVisible(true);
 			}		
 		});
 		
 		
 		//set player detialis dialog
-		m_playerDetailsDialog.setClosePlayerDialogListener(new ClosePlayerDialogListener() {
+		((PlayerDetailsDialog)m_playerDetailsDialog).setClosePlayerDialogListener(new ClosePlayerDialogListener() {
 			public void onCloseDialog() {
 				MainFrame.this.setEnabled(true);
 			}
