@@ -22,9 +22,18 @@ import gui.Utils;
 
 public class Database {
 	private List <Player> m_players;
+	private static Database SingletonDatabase = null;
 	
-	public Database() {
+	private Database() {
 		m_players = new LinkedList<Player>();
+	}
+	
+	public static Database getInstance() { //Singleton Design pattern
+		if (SingletonDatabase == null) {
+			SingletonDatabase = new Database();
+		}
+		
+		return SingletonDatabase;
 	}
 	
 	public void addPlayer(Player player) {

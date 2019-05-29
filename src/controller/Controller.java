@@ -15,7 +15,7 @@ public class Controller {
 	 private Database db;
 	 
 	 public Controller() {
-		 db = new Database();
+		 db = Database.getInstance(); //using Singleton design pattern
 	 }
 	 
 	 public List<Player> getPlayers() {
