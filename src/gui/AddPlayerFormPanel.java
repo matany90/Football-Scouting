@@ -294,9 +294,6 @@ public class AddPlayerFormPanel extends JPanel {
 			}		
 		});
 		
-		//TEST
-		//setBackgroundImage();
-		
 		//Default set up for Goalkeeper skills
 		setSkillsEnabled(false);
 		

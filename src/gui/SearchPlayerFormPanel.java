@@ -392,7 +392,9 @@ public class SearchPlayerFormPanel extends JPanel {
 		return m_freeAgentJRadioButtonFormat;
 	}
 	
-	
+	public void setSearchByNameField(String nameToSearch) {
+		m_searchByNameField.setText(nameToSearch);
+	}
 
 	public void setFieldsAttachedListener(DocumentListener i_listener) {		
 		m_searchByNameField.getDocument().addDocumentListener(i_listener);
@@ -427,6 +429,10 @@ public class SearchPlayerFormPanel extends JPanel {
 		m_searchByNameCheckBox.setSelected(true);
 		
 		//set disabled for all labels before checkbox clicked
+		//Name
+		m_searchByNameField.setEnabled(true);
+		m_searchByNameLabel.setEnabled(true);
+		
 		//current team
 		m_searchByCurrentTeamCheckBox.setSelected(false);
 		m_searchByCurrentTeamLabel.setEnabled(false);

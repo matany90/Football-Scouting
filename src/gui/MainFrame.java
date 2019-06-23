@@ -81,17 +81,7 @@ public class MainFrame extends JFrame {
 		//set login ok button listener
 		((LoginDialog) m_loginDialog).setLoginListener(new LoginDialogListener() {
 			public boolean LoginDialogChange(String user, String password) {
-				if (Arrays.asList(k_userTypeOptions).contains(user) && password.equals(k_passwordAgentUser)) {
-					showMessageDialog("Login successful!",
-							"Login", JOptionPane.INFORMATION_MESSAGE);
-					MainFrame.this.setEnabled(true);
-					return true;
-				} 
-				else {
-					showMessageDialog("Username or password is incorrect. Please try again",
-							"Error", JOptionPane.ERROR_MESSAGE);
-					return false;
-				}				
+				return LoginUser(user, password);
 			}
 		});
 
@@ -170,26 +160,7 @@ public class MainFrame extends JFrame {
 		//set form ok button listener
 		m_addPlayerFormPanel.setOkButtonFormListener(new FormListener() {
 			public void formEventOccurred(FormEvent event) {
-				StringBuilder  error = new StringBuilder ();
-				if (m_addPlayerFormPanel.checkUserInputValidation(event, error)) {
-						if (showConfirmDialog("Are you sure you want to add the player to Table?",
-								"Save", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE)
-								&& m_controller.isPlayerNotExists(event.getId())) {
-							m_controller.addPlayer(event);
-							m_tablePanel.refresh();
-							m_addPlayerFormPanel.clearFormData();
-						} 
-						else if (!m_controller.isPlayerNotExists(event.getId())) { //id's player exists
-							showConfirmDialog( 
-			                "A player with ID: " + event.getId() + " already exists. "
-			                + "If you want to re-create the player, please delete the current one", "Error",
-			                JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
-						}
-				}
-				else {
-					JOptionPane.showConfirmDialog(MainFrame.this, 
-			                error, "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
-				}
+				AddPlayerToTable(event);
 			}	
 		});
 
@@ -351,7 +322,51 @@ public class MainFrame extends JFrame {
 		filters.add(customRowFilter.getFreeAgentOnlyFilter(isFreeAgentOnly));
 		m_tablePanel.setRowFilter(filters);
     }
-
+    
+    public void AddPlayerToTable(FormEvent event) {
+		StringBuilder  error = new StringBuilder ();
+		if (m_addPlayerFormPanel.checkUserInputValidation(event, error)) {
+				if (showConfirmDialog("Are you sure you want to add the player to Table?",
+						"Save", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE)
+						&& m_controller.isPlayerNotExists(event.getId())) {
+					m_controller.addPlayer(event);
+					m_tablePanel.refresh();
+					m_addPlayerFormPanel.clearFormData();
+				} 
+				else if (!m_controller.isPlayerNotExists(event.getId())) { //id's player exists
+					showConfirmDialog( 
+	                "A player with ID: " + event.getId() + " already exists. "
+	                + "If you want to re-create the player, please delete the current one", "Error",
+	                JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+				}
+		}
+		else {
+			JOptionPane.showConfirmDialog(MainFrame.this, 
+	                error, "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+		}
+    }
+    
+    public boolean LoginUser(String user, String password) {
+		if (Arrays.asList(k_userTypeOptions).contains(user) && password.equals(k_passwordAgentUser)) {
+			showMessageDialog("Login successful!",
+					"Login", JOptionPane.INFORMATION_MESSAGE);
+			MainFrame.this.setEnabled(true);
+			return true;
+		} 
+		else {
+			showMessageDialog("Username or password is incorrect. Please try again",
+					"Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}	
+    }
+    
+    public Controller getController() {
+    	return m_controller;
+    }
+    
+    public SearchPlayerFormPanel getSearchPlayerFormPanel() {
+    	return m_searchPlayerFormPanel;
+    }
 }
 
 

@@ -36,6 +36,10 @@ public class Database {
 		return SingletonDatabase;
 	}
 	
+	public void setPlayers(List<Player> players) {
+		m_players = players;
+	}
+	
 	public void addPlayer(Player player) {
 		m_players.add(player);
 	}

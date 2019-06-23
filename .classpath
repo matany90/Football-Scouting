@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="C:/Users/matan/Desktop/Comp/Java-GUI-Swing/FootballScouting/network libraries for Youtube/DJNativeSwing.jar"/>
 	<classpathentry kind="lib" path="C:/Users/matan/Desktop/Comp/Java-GUI-Swing/FootballScouting/network libraries for Youtube/DJNativeSwing-SWT.jar"/>
 	<classpathentry kind="lib" path="C:/Users/matan/Desktop/Comp/Java-GUI-Swing/FootballScouting/network libraries for Youtube/swt.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

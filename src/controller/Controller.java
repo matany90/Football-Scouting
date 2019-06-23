@@ -22,6 +22,10 @@ public class Controller {
 		 return db.getPlayers();
 	 }
 	 
+	 public void setPlayers(List<Player> players) {
+		 db.setPlayers(players);
+	 }
+	 
 	 public void addPlayer(FormEvent i_event) {
 		 	
 		 	String urlYoutube = i_event.getUrlYoutube();
