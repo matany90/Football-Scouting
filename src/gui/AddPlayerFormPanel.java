@@ -26,7 +26,6 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.Border;
 
-import model.PositionCategory;
 
 public class AddPlayerFormPanel extends JPanel {
 	
@@ -197,17 +196,17 @@ public class AddPlayerFormPanel extends JPanel {
 		
 		//set up Position Model
 		DefaultComboBoxModel positionModel = new DefaultComboBoxModel();
-		positionModel.addElement(new PositionCategory(0, "Goalkeeper").getPosition());
-		positionModel.addElement(new PositionCategory(1, "Left-back").getPosition());
-		positionModel.addElement(new PositionCategory(2, "Centre-back").getPosition());
-		positionModel.addElement(new PositionCategory(3, "Right-back").getPosition());
-		positionModel.addElement(new PositionCategory(4, "Centre-back").getPosition());
-		positionModel.addElement(new PositionCategory(5, "Defensive-midfielder").getPosition());
-		positionModel.addElement(new PositionCategory(6, "Centre-midfielder").getPosition());
-		positionModel.addElement(new PositionCategory(7, "Attacking-midfielder").getPosition());
-		positionModel.addElement(new PositionCategory(8, "Left-winger").getPosition());
-		positionModel.addElement(new PositionCategory(9, "Right-winger").getPosition());
-		positionModel.addElement(new PositionCategory(10, "Striker").getPosition());
+		positionModel.addElement("Goalkeeper");
+		positionModel.addElement("Left-back");
+		positionModel.addElement("Centre-back");
+		positionModel.addElement("Right-back");
+		positionModel.addElement("Centre-back");
+		positionModel.addElement("Defensive-midfielder");
+		positionModel.addElement("Centre-midfielder");
+		positionModel.addElement("Attacking-midfielder");
+		positionModel.addElement("Left-winger");
+		positionModel.addElement("Right-winger");
+		positionModel.addElement("Striker");
 		
 		m_positionList.setModel(positionModel);
 		m_positionList.setPreferredSize(new Dimension(150, 30));
