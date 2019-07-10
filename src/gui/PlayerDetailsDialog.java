@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -93,15 +94,8 @@ public class PlayerDetailsDialog extends JDialog implements FootballScoutingJDia
 		m_position = new JLabel();
 		m_overall = new JLabel();
 		//youtube
-		m_testYoutube = new JButton("Youtube");
-		//m_webBrowser = new JWebBrowser();
+		m_testYoutube = new JButton();
 		m_urlYoutube = new String();
-
-		
-//		Border border = BorderFactory.createLineBorder(Color.BLACK);
-//		m_playerName.setBorder(BorderFactory.createCompoundBorder(border,
-//	            BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-		
 		
 		//set fonts
 		m_imageProfileLabel.setFont(setTextSize(15));
@@ -177,6 +171,15 @@ public class PlayerDetailsDialog extends JDialog implements FootballScoutingJDia
 				m_webBrowserDialog = JDialogFactory.CreateJDialog("Web Browser JDialog", PlayerDetailsDialog.this, m_urlYoutube);
 			}		
 		});
+		
+		//youtube button UI
+		m_testYoutube.setPreferredSize(new Dimension(100, 30));
+		ImageIcon image = new ImageIcon(getClass().getResource("/img/youtube3.png"));
+		m_testYoutube.setIcon(new ImageIcon(image.getImage().getScaledInstance(100, 30, Image.SCALE_SMOOTH)));
+		m_testYoutube.setBorderPainted(false);
+		m_testYoutube.setFocusPainted(false);
+		m_testYoutube.setContentAreaFilled(false);
+		m_testYoutube.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	
 	}
 	
@@ -249,11 +252,6 @@ public class PlayerDetailsDialog extends JDialog implements FootballScoutingJDia
 		}
 	}
 	
-//	private void layoutComponents() {
-//
-//
-//	}
-	
 	public void setClosePlayerDialogListener(ClosePlayerDialogListener i_listener) {
 		m_closePlayerDialogListener = i_listener;
 	}
@@ -266,7 +264,7 @@ public class PlayerDetailsDialog extends JDialog implements FootballScoutingJDia
 		boolean isGoalkeeper = m_positionOnField.getText().substring(19, m_positionOnField.getText().length()).equals("Goalkeeper");
 		gc.gridy = 0;
 		gc.insets = new Insets(0,0,0,5);
-		
+
 		////////////FIRST LINE - IMAGE
 		gc.gridy++;
 		gc.gridx = 1;
