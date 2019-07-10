@@ -32,10 +32,7 @@ public class TablePanel extends JPanel {
 	private JTableHeader m_header;
 	private PlayerTableListener m_playerTableListener;
 	private PlayerDetailsListener m_playerDetailsListener;
-	
-	 
 
-	
 	public TablePanel() {
 		m_tableModel = new PlayerTableModel();
 		m_table = new JTable(m_tableModel);
@@ -98,6 +95,10 @@ public class TablePanel extends JPanel {
 		this.m_playerTableListener = i_listener;
 	}
 	
+	public PlayerTableListener getPlayerTableListener() {
+		return m_playerTableListener;
+	}
+	
 	public void setPlayerDetailsListener(PlayerDetailsListener i_listener) {
 		m_playerDetailsListener = i_listener;
 	}
@@ -112,6 +113,10 @@ public class TablePanel extends JPanel {
 	
 	public PlayerTableModel getModel() {
 		return m_tableModel;
+	}
+	
+	public JTable getTable() {
+		return m_table;
 	}
 		
 	public void setRowFilter(List<RowFilter<Object,Object>> i_filters) {

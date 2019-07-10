@@ -19,6 +19,10 @@ public class PlayerTableModel extends AbstractTableModel {
 		this.m_players = i_players;
 	}
 	
+	public List<Player> getData() {
+		return m_players;
+	}
+	
 	@Override
 	public String getColumnName(int column) {
 		return m_colNames[column];

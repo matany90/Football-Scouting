@@ -77,8 +77,7 @@ public class SearchPlayerFormPanel extends JPanel {
 		dim.width = 250;
 		setPreferredSize(dim);
 		
-		//init:
-		
+		//init:		
 		//by name:
 		m_searchByNameCheckBox = new JCheckBox();
 		m_searchByNameLabel = new JLabel("Player Name: ");
@@ -401,6 +400,38 @@ public class SearchPlayerFormPanel extends JPanel {
 		m_searchByNameField.setText(nameToSearch);
 	}
 	
+	public void setSearchByCurrentTeamField(String teamToSearch) {
+		m_searchByCurrentTeamField.setText(teamToSearch);
+	}
+	
+	public void setSearchByMaxAgeField(String age) {
+		m_maxAgeSpinnerFormat.setText(age);
+	}
+	
+	public void setSearchByMinAge(String age) {
+		m_minAgeSpinnerFormat.setText(age);
+	}
+	
+	public void setSearchByMinOverall(String overall) {
+		m_minOverallSpinnerFormat.setText(overall);
+	}
+	
+	public void setSearchByMaxOverall(String overall) {
+		m_maxOverallSpinnerFormat.setText(overall);
+	}
+	
+	public void setSearchByMinMarketValue(String marketValue) {
+		m_searchByMinMarketValueField.setText(marketValue);
+	}
+	
+	public void setSearchByMaxMarketValue(String marketValue) {
+		m_searchByMaxMarketValueField.setText(marketValue);
+	}
+	
+	public void setSearchByIsFreeAgent(boolean isFreeAgent) {
+		m_freeAgentJRadioButtonFormat.setText(isFreeAgent ? "1" : "0");
+	}
+		
 	public void setFilterTableListener(FilterTableListener listener) {
 		m_filterTableListener = listener;
 	}

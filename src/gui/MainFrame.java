@@ -319,6 +319,10 @@ public class MainFrame extends JFrame {
     public SearchPlayerFormPanel getSearchPlayerFormPanel() {
     	return m_searchPlayerFormPanel;
     }
+    
+    public TablePanel getTablePanel() {
+    	return m_tablePanel;
+    }
 }
 
 

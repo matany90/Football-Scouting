@@ -16,21 +16,21 @@ class JDialogFactoryJunitTest {
 	public void CreateYoutubeJDialogTest() {
 		FootballScoutingJDialogs YoutubeJDialog = JDialogFactory.CreateJDialog("Add Youtube JDialog", new JPanel(), "");
 		
-		Assert.assertNotNull(YoutubeJDialog);
+		Assert.assertTrue((AddYoutubeDialog)YoutubeJDialog != null);
 	}
 	
 	@Test
 	public void CreateLoginJDialogTest() {
 		FootballScoutingJDialogs LoginJDialog = JDialogFactory.CreateJDialog("Login JDialog", new JFrame(), "");
 		
-		Assert.assertNotNull(LoginJDialog);
+		Assert.assertTrue((LoginDialog)LoginJDialog != null);
 	}
 	
 	@Test
 	public void CreatePlayerDetailsJDialogTest() {
 		FootballScoutingJDialogs PlayerDetailsJDialog = JDialogFactory.CreateJDialog("Player Details JDialog", new JFrame(), "");
 		
-		Assert.assertNotNull(PlayerDetailsJDialog);
+		Assert.assertTrue((PlayerDetailsDialog)PlayerDetailsJDialog != null);
 	}
 	
 	@Test
@@ -39,7 +39,7 @@ class JDialogFactoryJunitTest {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {				
 				FootballScoutingJDialogs WebBrowserJDialog = JDialogFactory.CreateJDialog("Web Browser JDialog", new JDialog(), "https://www.youtube.com/watch?v=pq5-d9COvzw");
-				Assert.assertNotNull(WebBrowserJDialog);
+				Assert.assertTrue((WebBrowserDialog)WebBrowserJDialog != null);
 			}		
 		});       
 	}
