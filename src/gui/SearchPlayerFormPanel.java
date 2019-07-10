@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -15,8 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class SearchPlayerFormPanel extends JPanel {
@@ -65,6 +69,7 @@ public class SearchPlayerFormPanel extends JPanel {
 	//image
 	private JLabel m_imageLabel;
 	private DocumentListener m_fieldsListener;
+	private FilterTableListener m_filterTableListener;
 	
 	public SearchPlayerFormPanel() {
 		//set Size:
@@ -395,6 +400,65 @@ public class SearchPlayerFormPanel extends JPanel {
 	public void setSearchByNameField(String nameToSearch) {
 		m_searchByNameField.setText(nameToSearch);
 	}
+	
+	public void setFilterTableListener(FilterTableListener listener) {
+		m_filterTableListener = listener;
+	}
+	
+	
+	public void setSearchListeners() {
+		//invoke with every change on search's state
+		 DocumentListener fieldsListener = new DocumentListener() {
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				updateFilter();				
+			}
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				updateFilter();				
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				updateFilter();				
+			}		
+		};
+				
+		setFieldsListener(fieldsListener); //set listener to SearchForm
+		setFieldsAttachedListener(fieldsListener); //attached TextFields to listener
+	}
+	
+
+    private void updateFilter() {
+    	//getting the current search state after change made
+    	String nameValueUserTyped = m_searchByNameField.getText();
+    	String currentTeamUserTyped = m_searchByCurrentTeamField.getText();
+    	String minMarketValueUserTyped = m_searchByMinMarketValueField.getText();
+    	String maxMarketValueUserTyped = m_searchByMaxMarketValueField.getText();
+    	String minAgeValueUserTyped = m_minAgeSpinnerFormat.getText();
+    	String maxAgeValueUserTyped = m_maxAgeSpinnerFormat.getText();
+    	String minOverallUserTyped = m_minOverallSpinnerFormat.getText();
+    	String maxOverallUserTyped = m_maxOverallSpinnerFormat.getText();
+    	boolean isFreeAgentOnly = m_freeAgentJRadioButtonFormat.getText().equals("1");
+    	
+    	//create filters array and init rowFilters
+	List<RowFilter<Object,Object>> filters = new ArrayList<RowFilter<Object,Object>>();
+		CustomRowFilter customRowFilter = new CustomRowFilter();
+		
+		filters.add(customRowFilter.getPlayerNameFilter(nameValueUserTyped));
+		filters.add(customRowFilter.getCurrentTeamFilter(currentTeamUserTyped));
+		filters.add(customRowFilter.getMaxMarketValueFilter(maxMarketValueUserTyped));
+		filters.add(customRowFilter.getMinMarketValueFilter(minMarketValueUserTyped));
+		filters.add(customRowFilter.getMinAgeFilter(minAgeValueUserTyped));
+		filters.add(customRowFilter.getMaxAgeFilter(maxAgeValueUserTyped));
+		filters.add(customRowFilter.getMinOverallFilter(minOverallUserTyped));
+		filters.add(customRowFilter.getMaxOverallFilter(maxOverallUserTyped));
+		filters.add(customRowFilter.getFreeAgentOnlyFilter(isFreeAgentOnly));
+		
+		if (m_filterTableListener != null) {
+			m_filterTableListener.changeTextOccurred(filters);
+		}
+    }
 
 	public void setFieldsAttachedListener(DocumentListener i_listener) {		
 		m_searchByNameField.getDocument().addDocumentListener(i_listener);

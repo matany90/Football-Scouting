@@ -138,10 +138,7 @@ public class MainFrame extends JFrame {
 		//load default file;
 		try {
 			//FOR PRODUCTION - jar file need to be in the project folder:
-			InputStream is = new FileInputStream("testFiles/defaultFile.fer");
-			//FOR DEVELOPMENT:
-			//InputStream is = getClass().getResourceAsStream("/testFiles/defaultFile.fer");
-			//FOR BOTH:
+			InputStream is = new FileInputStream("Players DB Files/defaultFile.fer");
 			m_controller.loadFromFile(is);
 			m_tablePanel.refresh();
 		}
@@ -166,7 +163,13 @@ public class MainFrame extends JFrame {
 
 			
 		//set ALL search listeners
-		setSearchListeners();
+		m_searchPlayerFormPanel.setSearchListeners();
+		m_searchPlayerFormPanel.setFilterTableListener(new FilterTableListener() {
+			@Override
+			public void changeTextOccurred(List<RowFilter<Object, Object>> filters) {
+				m_tablePanel.setRowFilter(filters);				
+			}			
+		});
 		
 		//Adding Components:
 		add(m_splitPane, BorderLayout.CENTER);
@@ -271,57 +274,6 @@ public class MainFrame extends JFrame {
 				i_message, i_header, i_icon);
 	}
 	
-	
-	private void setSearchListeners() {
-		//invoke with every change on search's state
-		 DocumentListener fieldsListener = new DocumentListener() {
-			@Override
-			public void changedUpdate(DocumentEvent arg0) {
-				updateFilter();				
-			}
-			@Override
-			public void insertUpdate(DocumentEvent arg0) {
-				updateFilter();				
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent arg0) {
-				updateFilter();				
-			}		
-		};
-				
-		m_searchPlayerFormPanel.setFieldsListener(fieldsListener); //set listener to SearchForm
-		m_searchPlayerFormPanel.setFieldsAttachedListener(fieldsListener); //attached TextFields to listener
-	}
-	
-
-    private void updateFilter() {
-    	//getting the current search state after change made
-    	String nameValueUserTyped = m_searchPlayerFormPanel.getSearchByNameField().getText();
-    	String currentTeamUserTyped = m_searchPlayerFormPanel.getSearchByCurrentTeamField().getText();
-    	String minMarketValueUserTyped = m_searchPlayerFormPanel.getSearchByMinMarketValueField().getText();
-    	String maxMarketValueUserTyped = m_searchPlayerFormPanel.getSearchByMaxMarketValueField().getText();
-    	String minAgeValueUserTyped = m_searchPlayerFormPanel.getSearchByMinAgeField().getText();
-    	String maxAgeValueUserTyped = m_searchPlayerFormPanel.getSearchByMaxAgeField().getText();
-    	String minOverallUserTyped = m_searchPlayerFormPanel.getSearchByMinOverallField().getText();
-    	String maxOverallUserTyped = m_searchPlayerFormPanel.getSearchByMaxOverallField().getText();
-    	boolean isFreeAgentOnly = m_searchPlayerFormPanel.getSearchByFreeAgentOnlyField().getText().equals("1");
-    	
-    	//create filters array and init rowFilters
-	List<RowFilter<Object,Object>> filters = new ArrayList<RowFilter<Object,Object>>();
-		CustomRowFilter customRowFilter = new CustomRowFilter();
-		
-		filters.add(customRowFilter.getPlayerNameFilter(nameValueUserTyped));
-		filters.add(customRowFilter.getCurrentTeamFilter(currentTeamUserTyped));
-		filters.add(customRowFilter.getMaxMarketValueFilter(maxMarketValueUserTyped));
-		filters.add(customRowFilter.getMinMarketValueFilter(minMarketValueUserTyped));
-		filters.add(customRowFilter.getMinAgeFilter(minAgeValueUserTyped));
-		filters.add(customRowFilter.getMaxAgeFilter(maxAgeValueUserTyped));
-		filters.add(customRowFilter.getMinOverallFilter(minOverallUserTyped));
-		filters.add(customRowFilter.getMaxOverallFilter(maxOverallUserTyped));
-		filters.add(customRowFilter.getFreeAgentOnlyFilter(isFreeAgentOnly));
-		m_tablePanel.setRowFilter(filters);
-    }
     
     public void AddPlayerToTable(FormEvent event) {
 		StringBuilder  error = new StringBuilder ();
