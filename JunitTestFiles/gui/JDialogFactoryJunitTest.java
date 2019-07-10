@@ -1,0 +1,47 @@
+package gui;
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+
+class JDialogFactoryJunitTest {
+	
+	@Test
+	public void CreateYoutubeJDialogTest() {
+		FootballScoutingJDialogs YoutubeJDialog = JDialogFactory.CreateJDialog("Add Youtube JDialog", new JPanel(), "");
+		
+		Assert.assertNotNull(YoutubeJDialog);
+	}
+	
+	@Test
+	public void CreateLoginJDialogTest() {
+		FootballScoutingJDialogs LoginJDialog = JDialogFactory.CreateJDialog("Login JDialog", new JFrame(), "");
+		
+		Assert.assertNotNull(LoginJDialog);
+	}
+	
+	@Test
+	public void CreatePlayerDetailsJDialogTest() {
+		FootballScoutingJDialogs PlayerDetailsJDialog = JDialogFactory.CreateJDialog("Player Details JDialog", new JFrame(), "");
+		
+		Assert.assertNotNull(PlayerDetailsJDialog);
+	}
+	
+	@Test
+	public void CreateWebBrowserJDialogTest() {
+		NativeInterface.open();
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {				
+				FootballScoutingJDialogs WebBrowserJDialog = JDialogFactory.CreateJDialog("Web Browser JDialog", new JDialog(), "https://www.youtube.com/watch?v=pq5-d9COvzw");
+				Assert.assertNotNull(WebBrowserJDialog);
+			}		
+		});       
+	}
+
+}

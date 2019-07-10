@@ -8,13 +8,19 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.Player;
 
 class MainFrameJunitTest {
 	
-	MainFrame mainFrameTest = new MainFrame();
+	MainFrame mainFrameTest;
+	
+	@BeforeEach
+	public void setUp() {
+		mainFrameTest = new MainFrame();
+	}
 	
 	@Test
 	public void AddPlayerTest() {

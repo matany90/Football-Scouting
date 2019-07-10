@@ -178,11 +178,7 @@ public class AddPlayerFormPanel extends JPanel {
 		m_addYoutubeDialog = JDialogFactory.CreateJDialog("Add Youtube JDialog", this, "");
 		m_urlYoutube = new String();	
 		m_okButton = new JButton("OK");
-		//
 		
-
-
-	
 		//set up Favorite leg radios group:
 		m_favoriteLegGroup.add(m_rightFooterButton);
 		m_favoriteLegGroup.add(m_leftFooterButton);
@@ -191,9 +187,7 @@ public class AddPlayerFormPanel extends JPanel {
 		m_leftFooterButton.setActionCommand("Left-footer");
 		m_bothFooterButton.setActionCommand("Both");
 		m_rightFooterButton.setSelected(true);
-	
-		
-		
+			
 		//set up Position Model
 		DefaultComboBoxModel positionModel = new DefaultComboBoxModel();
 		positionModel.addElement("Goalkeeper");
@@ -235,7 +229,6 @@ public class AddPlayerFormPanel extends JPanel {
 				m_urlYoutube = ((AddYoutubeDialog)m_addYoutubeDialog).getAddUrlTextField().getText();
 			}			
 		});
-		
 		
 		//okButton add Action Listener
 		m_okButton.addActionListener(new ActionListener() {
@@ -755,8 +748,7 @@ public class AddPlayerFormPanel extends JPanel {
 		m_urlYoutube = new String("");
 		((AddYoutubeDialog)m_addYoutubeDialog).setTextAddUrlTextField("");
 	}
-		
-	
+			
 	public boolean checkUserInputValidation(FormEvent i_event, StringBuilder  i_error) {
 		if (i_event.getPlayerName().isEmpty()) {
 			i_error.append("Name field can't remain empty");
@@ -804,6 +796,70 @@ public class AddPlayerFormPanel extends JPanel {
 		        return true;		        
 		 }
 		 return false;		
+	}
+	
+	public JSpinner getDivingGoalkeeperSpinner() {
+		return m_divingGoalkeeperSpinner;
+	}
+
+
+	public JSpinner getHandlingGoalkeeperSpinner() {
+		return m_handlingGoalkeeperSpinner;
+	}
+
+
+	public JSpinner getKickingGoalkeeperSpinner() {
+		return m_kickingGoalkeeperSpinner;
+	}
+
+
+	public JSpinner getReflexesGoalkeeperSpinner() {
+		return m_reflexesGoalkeeperSpinner;
+	}
+
+
+	public JSpinner getSpeedingGoalkeeperSpinner() {
+		return m_speedingGoalkeeperSpinner;
+	}
+
+
+	public JSpinner getPositionGoalkeeperSpinner() {
+		return m_positionGoalkeeperSpinner;
+	}
+
+
+	public JSpinner getPaceRegularSpinner() {
+		return m_paceRegularSpinner;
+	}
+
+
+	public JSpinner getShootRegularSpinner() {
+		return m_shootRegularSpinner;
+	}
+
+
+	public JSpinner getPassRegularSpinner() {
+		return m_passRegularSpinner;
+	}
+
+
+	public JSpinner getDribbleRegularSpinner() {
+		return m_dribbleRegularSpinner;
+	}
+
+
+	public JSpinner getDefenceRegularSpinner() {
+		return m_defenceRegularSpinner;
+	}
+
+
+	public JSpinner getPowerRegularSpinner() {
+		return m_powerRegularSpinner;
+	}
+
+
+	public JComboBox getPositionJComboBox() {
+		return m_positionList;
 	}
 		
 }
