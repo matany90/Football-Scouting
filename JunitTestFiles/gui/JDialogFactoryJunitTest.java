@@ -9,6 +9,12 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import gui.Components.JDialogs.AddYoutubeDialog;
+import gui.Components.JDialogs.JDialogFactory;
+import gui.Components.JDialogs.LoginDialog;
+import gui.Components.JDialogs.PlayerDetailsDialog;
+import gui.Components.JDialogs.WebBrowserDialog;
+import gui.Listeners.FootballScoutingJDialogs;
 
 class JDialogFactoryJunitTest {
 	

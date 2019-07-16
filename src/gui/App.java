@@ -5,6 +5,7 @@ package gui;
 import javax.swing.SwingUtilities;
 
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import gui.Components.Screens.MainFrame;
 
 public class App {
 

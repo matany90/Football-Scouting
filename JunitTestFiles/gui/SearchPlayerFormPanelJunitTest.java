@@ -11,6 +11,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import gui.Components.Screens.MainFrame;
+import gui.Components.Screens.SearchPlayerFormPanel;
 import model.Player;
 
 class SearchPlayerFormPanelJunitTest {

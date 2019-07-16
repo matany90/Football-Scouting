@@ -11,6 +11,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import gui.Components.Screens.MainFrame;
 import model.Player;
 
 class RemovePlayerFromDatabaseJunitTest {

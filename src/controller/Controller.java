@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
-import gui.FormEvent;
+import gui.Listeners.FormEvent;
 import model.Database;
 import model.Player;
 

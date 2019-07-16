@@ -8,6 +8,9 @@ import javax.swing.ImageIcon;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import gui.Components.Screens.MainFrame;
+import gui.Listeners.FormEvent;
+
 class AddPlayerToDatabaseJunitTest {
 
 	MainFrame mainFrameTest;
