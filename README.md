@@ -10,4 +10,4 @@ Technologies and Code principles i used:
 Some ScreenShots from the running Application:
 
 Login Screen:
-![Alt text](Github Images\login.JPG?raw=true "Title")
+![alt text](https://i.imgur.com/nDBfJvs.jpg)
