@@ -6,3 +6,8 @@ Technologies and Code principles i used:
 - javax.swing
 - MVC architecture pattern
 - Design Patterns - Singleton, Factory, Observer
+
+Some ScreenShots from the running Application:
+
+Login Screen:
+![alt text](https://imgur.com/nDBfJvs)
