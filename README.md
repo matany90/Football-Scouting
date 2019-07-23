@@ -9,5 +9,17 @@ Technologies and Code principles i used:
 
 Some ScreenShots from the running Application:
 
-Login Screen:
+#Login Screen:
 ![alt text](https://i.imgur.com/nDBfJvs.jpg)
+
+#App Player Panel:
+![alt text](https://i.imgur.com/7GrLsdz.jpg)
+
+#Player Dialog:
+![alt text](https://i.imgur.com/qnBeJH7.jpg)
+
+#Youtube Highlights video loading:
+![alt text](https://i.imgur.com/XxHjVGW.jpg)
+
+#Youtube Highlights video:
+![alt text](https://i.imgur.com/iP7VNfV.jpg)
