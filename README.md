@@ -23,3 +23,6 @@ Some ScreenShots from the running Application:
 
 #Youtube Highlights video:
 ![alt text](https://i.imgur.com/iP7VNfV.jpg)
+
+
+The application reads all data from binary file located at Players DB Files\defaultFile.fer
